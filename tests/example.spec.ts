@@ -11,7 +11,7 @@ test("Clicking on Elements", async ({page}) => {
   await page.click("#signin_button")
   await page.click("text=Sign in")
 
-  const errorMessage = await page.locator(".alert_error")
+  const errorMessage = await page.locator(".alert-error")
   await expect(errorMessage).toContainText("Login and/or password are wrong.")
 })
 
@@ -34,4 +34,16 @@ test("Selectors", async ({page}) => {
   // xpath
   await page.click("//button")
  */
+})
+
+test("Working with inputs",async ({page}) => {
+  await page.goto("http://zero.webappsecurity.com/index.html")
+  await page.click("#signin_button")
+
+  await page.fill("#user_login", "incorrect_username")
+  await page.fill("#user_password", "incorrect_password")
+  await page.click("text=Sign in")
+
+  const errorMessage = await page.locator(".alert-error")
+  await expect(errorMessage).toContainText("Login and/or password are wrong.")
 })
