@@ -64,16 +64,22 @@ test.describe.only("My first test suite", () => {
   })  
 })
 
-test.only("Screenshot", async ({page}) => {
-  // Step 1. Load website
-  await page.goto("https://example.com/")
-
-  // Step 2. Take screenshot of full page
-  await page.screenshot({ path: "screenshot.png", fullPage: true})
-})
-
-test.only("Single element screenshot", async ({page}) => {
-  await page.goto("https://example.com/")
-  const element = await page.$("h1")
-  await element.screenshot({path: "single_element_screenshot.png"})
+test.describe.only("Hooks", () => {
+  test.beforeEach(async ({page}) => {
+    await page.goto("https://example.com/")
+  })
+  
+  test("Screenshot", async ({page}) => {
+    // Step 1. Load website
+    // await page.goto("https://example.com/")
+  
+    // Step 2. Take screenshot of full page
+    await page.screenshot({ path: "screenshot.png", fullPage: true})
+  })
+  
+  test("Single element screenshot", async ({page}) => {
+    // await page.goto("https://example.com/")
+    const element = await page.$("h1")
+    await element.screenshot({path: "single_element_screenshot.png"})
+  })
 })
