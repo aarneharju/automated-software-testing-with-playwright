@@ -6,7 +6,7 @@ test('Simple basic test', async ({page}) => {
   await expect(pageTitle).toContainText('Example Domain')
 })
 
-test("Clicking on Elements", async ({page}) => {
+test("Clicking on Elements @myTag", async ({page}) => {
   await page.goto("http://zero.webappsecurity.com/index.html")
   await page.click("#signin_button")
   await page.click("text=Sign in")
@@ -49,7 +49,7 @@ test.describe.only("My first test suite", () => {
     await expect(errorMessage).toContainText("Login and/or password are wrong.")
   })
   
-  test("Assertions", async ({page}) => {
+  test("Assertions @myTag", async ({page}) => {
     await page.goto("https://example.com/")
     await expect(page).toHaveURL("https://example.com/")
     await expect(page).toHaveTitle("Example Domain")
