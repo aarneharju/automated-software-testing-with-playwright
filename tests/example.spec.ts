@@ -37,7 +37,7 @@ test.skip("Selectors", async ({page}) => {
 
 })
 
-test.describe.only("My first test suite", () => {
+test.describe.parallel.only("My first test suite", () => {
   test("Working with inputs",async ({page}) => {
     await page.goto("http://zero.webappsecurity.com/index.html")
     await page.click("#signin_button")
@@ -65,7 +65,7 @@ test.describe.only("My first test suite", () => {
   })  
 })
 
-test.describe.only("Hooks", () => {
+test.describe.parallel.only("Hooks", () => {
   test.beforeEach(async ({page}) => {
     await page.goto("https://example.com/")
   })
