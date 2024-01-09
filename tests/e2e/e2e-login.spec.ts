@@ -13,12 +13,15 @@ test.describe.parallel("Login / logout flow", () => {
     // Negative scenario
     test("Negative scenario for login", async ({ page }) => {
         await page.click("#signin_button")
-        await page.locator("#user_login").fill("invalid username")
-        await page.locator("#user_password").fill("invalid password")
-        await page.click("text=Sign in")
+        await loginPage.login("invalid username", "invalid password")
+        await loginPage.assertErrorMessage()
+        
+        // await page.locator("#user_login").fill("invalid username")
+        // await page.locator("#user_password").fill("invalid password")
+        // await page.click("text=Sign in")
 
-        const errorMessage = await page.locator(".alert-error")
-        await expect(errorMessage).toContainText("Login and/or password are wrong.")
+        // const errorMessage = await page.locator(".alert-error")
+        // await expect(errorMessage).toContainText("Login and/or password are wrong.")
     })
 
     // Positive scenario + logout
