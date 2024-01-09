@@ -1,6 +1,6 @@
 import { test, expect} from '@playwright/test'
 
-test.describe.parallel("Feedback form", async ()=> {
+test.describe.parallel("Feedback form", ()=> {
     test.beforeEach(async ({ page }) => {
         await page.goto("http://zero.webappsecurity.com/")
         await page.locator("#feedback").click()
