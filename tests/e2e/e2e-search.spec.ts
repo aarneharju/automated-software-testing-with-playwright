@@ -1,10 +1,12 @@
 import { test, expect} from "@playwright/test"
+import { HomePage } from "../../page-objects/HomePage"
 
 test.describe("Search", () => {
     test("Should find search results", async ({ page }) => {
-        await page.goto("http://zero.webappsecurity.com/")
-        await page.locator("#searchTerm").pressSequentially("bank")
-        await page.keyboard.press("Enter")
+        const homePage = new HomePage(page)
+
+        await homePage.visit()
+        await homePage.searchFor("bank")
 
         // Assertion with waitForSelector, fail will be indicated with a timeout
         await page.waitForSelector("li > a")
