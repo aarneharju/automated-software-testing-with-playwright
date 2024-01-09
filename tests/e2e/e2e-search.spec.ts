@@ -6,6 +6,11 @@ test.describe("Search", () => {
         await page.locator("#searchTerm").pressSequentially("bank")
         await page.keyboard.press("Enter")
 
+        // Assertion with waitForSelector, fail will be indicated with a timeout
         await page.waitForSelector("li > a")
+
+        // Assertion with expect toHaveCount
+        const numberOfLinks = await page.locator("li > a")
+        await expect(numberOfLinks).toHaveCount(2)
     })
 })
