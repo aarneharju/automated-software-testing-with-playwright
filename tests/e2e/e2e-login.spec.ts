@@ -1,9 +1,13 @@
 import { test, expect } from "@playwright/test"
+import { LoginPage } from "../../page-objects/LoginPage"
 
 test.describe.parallel("Login / logout flow", () => {
+    let loginPage: LoginPage
     // Before hook
     test.beforeEach(async ({ page }) => {
-        await page.goto("http://zero.webappsecurity.com/")
+        loginPage = new LoginPage(page)
+        await loginPage.visit()
+        //await page.goto("http://zero.webappsecurity.com/")
     })
 
     // Negative scenario
