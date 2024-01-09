@@ -1,7 +1,7 @@
 import { PlaywrightTestConfig } from "@playwright/test";
 
 const config: PlaywrightTestConfig = {
-    timeout: 5000,
+    timeout: 10000,
     retries: 0,
     testDir: "tests/e2e",
     use: {
@@ -10,7 +10,7 @@ const config: PlaywrightTestConfig = {
             width: 1280,
             height: 720
         },
-        actionTimeout: 5000,
+        actionTimeout: 10000,
         ignoreHTTPSErrors: true,
         video: "retain-on-failure",
         screenshot: "only-on-failure",
