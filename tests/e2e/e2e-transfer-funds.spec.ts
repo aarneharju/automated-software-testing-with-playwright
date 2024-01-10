@@ -1,14 +1,20 @@
 import { test, expect } from "@playwright/test"
 import { HomePage } from "../../page-objects/HomePage"
 import { LoginPage } from "../../page-objects/LoginPage"
+import { Navbar } from "../../page-objects/Navbar"
+import { TransferFundsPage } from "../../page-objects/TrasferFundsPage"
 
 test.describe("Transfer funds", () => {
     let homePage: HomePage
     let loginPage: LoginPage
+    let navBar: Navbar
+    let transferFundsPage: TransferFundsPage
 
     test.beforeEach(async ({ page }) => {
         homePage = new HomePage(page)
         loginPage = new LoginPage(page)
+        navBar = new Navbar(page)
+        transferFundsPage = new TransferFundsPage(page)
 
         await homePage.visit()
         await homePage.clickOnSignIn()
@@ -16,18 +22,10 @@ test.describe("Transfer funds", () => {
     })
 
     test("Transfer funds", async ({ page }) => {
-         await page.locator("#transfer_funds_tab").click()
-         await page.locator("#tf_fromAccountId").selectOption("3")
-         await page.locator("#tf_toAccountId").selectOption("2")
-         await page.locator("#tf_amount").fill("550")
-         await page.locator("#tf_description").fill("Transfer description")
-         await page.locator("#btn_submit").click()
+        await navBar.goToPage("Transfer Funds")
+        await transferFundsPage.transferFundsFromSavingsToCheckingAccount()
 
-         const elementVerificationHeader = await page.locator("h2.board-header")
-         await expect(elementVerificationHeader).toContainText("Verify")
-         await page.locator("#btn_submit").click()
-
-         const elementTransactionConfirmed = await page.locator(".alert-success")
-         await expect(elementTransactionConfirmed).toContainText("You successfully submitted your transaction")
+        await transferFundsPage.checkThatTheTransferIsOkAndYouGetForwardedToTheVerificationPage()
+        await transferFundsPage.checkThatTheTransferWasConfirmed()
     })
 })
