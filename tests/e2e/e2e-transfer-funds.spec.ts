@@ -1,15 +1,18 @@
 import { test, expect } from "@playwright/test"
+import { HomePage } from "../../page-objects/HomePage"
+import { LoginPage } from "../../page-objects/LoginPage"
 
 test.describe("Transfer funds", () => {
-    test.beforeEach(async ({ page }) => {
-        await page.goto("http://zero.webappsecurity.com/")
-        await page.click("#signin_button")
-        await page.locator("#user_login").fill("username")
-        await page.locator("#user_password").fill("password")
-        await page.click("text=Sign in")
+    let homePage: HomePage
+    let loginPage: LoginPage
 
-        // SSL certificate error fix (chrome or firefox will throw error because of missing sertificate, edge doesn't. If you click back, you can access the site and are logged in however.)
-        await page.goto("http://zero.webappsecurity.com/bank/account-summary.html")
+    test.beforeEach(async ({ page }) => {
+        homePage = new HomePage(page)
+        loginPage = new LoginPage(page)
+
+        await homePage.visit()
+        await homePage.clickOnSignIn()
+        await loginPage.login("username", "password")
     })
 
     test("Transfer funds", async ({ page }) => {
