@@ -75,18 +75,24 @@ test.describe.parallel("API testing", () => {
         expect(responseBody.token).not.toBeTruthy()
     })
 
-    test.only("PUT request - Modify user data", async ({ request }) => {
+    test("PUT request - Modify user data", async ({ request }) => {
         const response = await request.put(`${baseURL}/users/2`, {
             data: {
                 "first_name": "Neo",
                 "job": "Agent"
             }
         })
-        console.log(await response.json());
+        // console.log(await response.json());
 
         const responseBody = await response.json()
         expect(response.ok()).toBeTruthy()
         expect(responseBody.first_name).toBe("Neo")
-        
     })
+
+    test("DELETE request - Delete user",async ({ request }) => {
+        const response = await request.delete(`${baseURL}/users/2`)
+
+        expect(response.status()).toBe(204)
+    })
+
 })
