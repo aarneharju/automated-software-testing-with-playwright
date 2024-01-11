@@ -7,7 +7,9 @@
     "tests:chrome": "playwright test --config=playwright.config.ts --project=Chromium --reporter=html",
     "tests:firefox": "playwright test --config=playwright.config.ts --project=Firefox --reporter=html",
     "tests:webkit": "playwright test --config=playwright.config.ts --project=Webkit --reporter=html",
-    "tests:e2e": "playwright test --config=e2e.config.ts --project=Chromium --reporter=html"
+    "tests:e2e": "playwright test --config=e2e.config.ts --project=Chromium --reporter=html",
+    "tests:visual": "playwright test --config=visual.config.ts --reporter=html",
+    "tests:visual:update": "playwright test --config=visual.config.ts --reporter=html --update-snapshots"
   },
   "author": "",
   "license": "ISC",
