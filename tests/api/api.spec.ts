@@ -74,4 +74,19 @@ test.describe.parallel("API testing", () => {
         const responseBody = await response.json()
         expect(responseBody.token).not.toBeTruthy()
     })
+
+    test.only("PUT request - Modify user data", async ({ request }) => {
+        const response = await request.put(`${baseURL}/users/2`, {
+            data: {
+                "first_name": "Neo",
+                "job": "Agent"
+            }
+        })
+        console.log(await response.json());
+
+        const responseBody = await response.json()
+        expect(response.ok()).toBeTruthy()
+        expect(responseBody.first_name).toBe("Neo")
+        
+    })
 })
