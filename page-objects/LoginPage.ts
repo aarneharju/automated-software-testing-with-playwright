@@ -31,4 +31,12 @@ export class LoginPage {
     async assertErrorMessage() {
         await expect(this.errorMessage).toContainText("Login and/or password are wrong.")
     }
+
+    async doAVisualRegressionCheckThatTheLoginWasSuccessful() {
+        await expect(this.page).toHaveScreenshot("login-successful-snapshot.png")
+    }
+
+    async doAVisualRegressionCheckThatTheLoginFailed() {
+        await expect(this.page).toHaveScreenshot("login-failed-snapshot.png")
+    }
 }
