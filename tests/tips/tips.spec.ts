@@ -39,5 +39,16 @@ test.describe.parallel("Tips & tricks section", () => {
         await page.waitForTimeout(500)
     })
 
+    test.only("Multiple tabs inside one browser",async ({ browser }) => {
+        const context = await browser.newContext()
+        const page1 = await context.newPage()
+        const page2 = await context.newPage()
+        const page3 = await context.newPage()
+        await page1.goto("https://www.google.com")
+        await page2.goto("https://www.youtube.com")
+        await page3.goto("https://www.twitch.tv")
+        await page1.waitForTimeout(5000)
 
+
+    })
 })
