@@ -1,4 +1,4 @@
-import { test } from '@playwright/test'
+import { expect, test } from '@playwright/test'
 
 test.describe.parallel("Tips & tricks section", () => {
     test("TestInfo object",async ({ page }, testInfo) => {
@@ -49,4 +49,12 @@ test.describe.parallel("Tips & tricks section", () => {
         await page3.goto("https://www.twitch.tv")
         await page1.waitForTimeout(5000)
     })
+
+    test("Save webpage as pdf",async ({ page }) => {
+        await page.goto("https://store.steampowered.com")
+        // await page.waitForURL("https://store.steampowered.com")
+        await page.waitForTimeout(7000)
+        await page.emulateMedia({ media: "screen"})
+        await page.pdf({ path: "pdf/steam-site.pdf"})
+    })          
 })
