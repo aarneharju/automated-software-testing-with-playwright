@@ -10,7 +10,9 @@
     "tests:e2e": "playwright test --config=e2e.config.ts --project=Chromium --reporter=html",
     "tests:visual": "playwright test --config=visual.config.ts --reporter=html",
     "tests:visual:update": "playwright test --config=visual.config.ts --reporter=html --update-snapshots",
-    "tests:api": "playwright test --config=api.config.ts --reporter=html"
+    "tests:api": "playwright test --config=api.config.ts --reporter=html",
+    "tests:api:jenkins": "playwright test --config=api.config.ts --reporter=list",
+    "jenkins-server": "java -jar jenkins.war --httpPort=8081 --enable-future-java"
   },
   "author": "",
   "license": "ISC",
