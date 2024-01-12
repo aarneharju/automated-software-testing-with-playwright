@@ -13,6 +13,7 @@
     "tests:api": "playwright test --config=api.config.ts --reporter=html",
     "tests:api:jenkins": "playwright test --config=api.config.ts --reporter=list",
     "tests:tips": "playwright test --config=tips.config.ts --project=chromium --reporter=html --headed --retries=3",
+    "wikipedia:iphone13": "playwright open --device=\"iPhone 13\" wikipedia.org",
     "jenkins-server": "java -jar jenkins.war --httpPort=8081 --enable-future-java"
   },
   "author": "",
