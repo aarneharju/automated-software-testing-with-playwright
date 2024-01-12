@@ -12,6 +12,7 @@
     "tests:visual:update": "playwright test --config=visual.config.ts --reporter=html --update-snapshots",
     "tests:api": "playwright test --config=api.config.ts --reporter=html",
     "tests:api:jenkins": "playwright test --config=api.config.ts --reporter=list",
+    "tests:tips": "playwright test --config=tips.config.ts --reporter=html",
     "jenkins-server": "java -jar jenkins.war --httpPort=8081 --enable-future-java"
   },
   "author": "",
