@@ -25,4 +25,19 @@ test.describe.parallel("Tips & tricks section", () => {
             await page.waitForTimeout(3000)
         })
     }
+
+    test("Mouse movement", async ({ page }) => {
+        await page.goto("https://codepen.io/Rahulive/pen/RwWYmVY")
+        await page.waitForTimeout(500)
+        await page.mouse.move(100, 600, {steps: 50})
+        await page.waitForTimeout(500)
+        await page.mouse.move(600, 600, {steps: 50})
+        await page.waitForTimeout(500)
+        await page.mouse.move(100, 600, {steps: 50})
+        await page.waitForTimeout(500)
+        await page.mouse.move(600, 600, {steps: 50})
+        await page.waitForTimeout(500)
+    })
+
+
 })
