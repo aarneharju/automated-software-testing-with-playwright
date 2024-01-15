@@ -1,5 +1,5 @@
 import { expect, test } from '@playwright/test'
-import { getRandomNumber } from '../../utils/data-helpers'
+import { getRandomNumber, getRandomString } from '../../utils/data-helpers'
 
 test.describe.parallel("Tips & tricks section", () => {
     test("TestInfo object",async ({ page }, testInfo) => {
@@ -59,8 +59,14 @@ test.describe.parallel("Tips & tricks section", () => {
         await page.pdf({ path: "pdf/steam-site.pdf"})
     })
 
-    test.only("Get random number",async () => {
+    test("Get random number",async () => {
         const randomNumber = await getRandomNumber()
         console.log(randomNumber)
+    })
+
+    test("Get random string",async () => {
+        const randomString = await getRandomString()
+        console.log(randomString);
+        
     })
 })
