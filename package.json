@@ -15,6 +15,7 @@
     "tests:tips": "playwright test --config=tips.config.ts --project=chromium --reporter=html --headed --retries=3",
     "wikipedia:iphone13": "playwright open --device=\"iPhone 13\" wikipedia.org",
     "twitter:screenshot:iphone13": "playwright screenshot --device=\"iPhone 13\" --color-scheme=dark --wait-for-timeout=3000 twitter.com screenshots/twitter-iphone-screenshot.png",
+    "google:italian": "playwright open --timezone=\"Europe/Rome\" --lang=\"it-IT\" google.com",
     "jenkins-server": "java -jar jenkins.war --httpPort=8081 --enable-future-java"
   },
   "author": "",
