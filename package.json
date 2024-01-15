@@ -13,6 +13,7 @@
     "tests:api": "playwright test --config=api.config.ts --reporter=html",
     "tests:api:jenkins": "playwright test --config=api.config.ts --reporter=list",
     "tests:tips": "playwright test --config=tips.config.ts --project=chromium --reporter=html --headed --retries=3",
+    "tests:tips:customreporter": "playwright test --config=tips.config.ts --project=chromium --reporter=reporter.ts --headed --retries=3",
     "wikipedia:iphone13": "playwright open --device=\"iPhone 13\" wikipedia.org",
     "twitter:screenshot:iphone13": "playwright screenshot --device=\"iPhone 13\" --color-scheme=dark --wait-for-timeout=3000 twitter.com screenshots/twitter-iphone-screenshot.png",
     "google:italian": "playwright open --timezone=\"Europe/Rome\" --lang=\"it-IT\" google.com",
@@ -23,5 +24,8 @@
   "dependencies": {
     "@playwright/test": "^1.40.1",
     "prettier": "^3.1.1"
+  },
+  "devDependencies": {
+    "@types/node": "^20.11.1"
   }
 }
