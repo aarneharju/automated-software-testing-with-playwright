@@ -1,4 +1,5 @@
 import { expect, test } from '@playwright/test'
+import { getRandomNumber } from '../../utils/data-helpers'
 
 test.describe.parallel("Tips & tricks section", () => {
     test("TestInfo object",async ({ page }, testInfo) => {
@@ -56,5 +57,10 @@ test.describe.parallel("Tips & tricks section", () => {
         await page.waitForTimeout(7000)
         await page.emulateMedia({ media: "screen"})
         await page.pdf({ path: "pdf/steam-site.pdf"})
-    })          
+    })
+
+    test.only("Get random number",async () => {
+        const randomNumber = await getRandomNumber()
+        console.log(randomNumber)
+    })
 })
